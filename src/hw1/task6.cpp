@@ -34,10 +34,7 @@ int main(int argc, char **argv) {
     std::string text = argv[1];
 
     auto min_skew = get_min_skew(text);
-    for (const auto& pos : min_skew) {
+    for (const auto &pos: min_skew) {
         std::cout << pos << ' ';
     }
 }
-
-
-

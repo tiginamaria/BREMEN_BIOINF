@@ -14,4 +14,3 @@ int main(int argc, char **argv) {
     auto hamming_distance = get_hamming_distance(text1, text2);
     std::cout << hamming_distance;
 }
-

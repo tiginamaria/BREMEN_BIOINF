@@ -29,7 +29,7 @@ std::string get_reversed_complement_pattern(const std::string &pattern) {
     return reversed_pattern;
 }
 
-std::vector<std::string> get_most_frequent_words(const std::string &text, int k, int d) {
+std::unordered_map<std::string, int> get_freq_table(const std::string &text, int k, int d) {
     std::unordered_map<std::string, int> freq_table;
 
     for (auto i = 0; i <= text.length() - k; ++i) {
@@ -38,6 +38,12 @@ std::vector<std::string> get_most_frequent_words(const std::string &text, int k,
             freq_table[pattern] = get_count(text, pattern, d);
         }
     }
+
+    return freq_table;
+}
+
+std::vector<std::string> get_most_frequent_words(const std::string &text, int k, int d) {
+    std::unordered_map<std::string, int> freq_table = get_freq_table(text, k, d);
 
     int max_freq = 0;
     std::vector<std::string> max_freq_words;
@@ -81,5 +87,3 @@ int main(int argc, char **argv) {
         std::cout << word << ' ';
     }
 }
-
-
