@@ -3,10 +3,10 @@ CPP=g++ --std=c++17
 CPP += -g
 
 
-all: bin/hw1/task1 bin/hw1/task2 bin/hw1/task3 bin/hw1/task4 bin/hw1/task5 bin/hw1/task6
+all: bin/hw1/task1 bin/hw1/task2 bin/hw1/task3 bin/hw1/task4 bin/hw1/task5 bin/hw1/task6 bin/hw2/task1
 
 bin:
-	mkdir -p "bin" "bin/hw1"
+	mkdir -p "bin" "bin/hw1" "bin/hw2"
 
 bin/hw1/task1: bin src/hw1/task1.cpp
 	$(CPP) -o bin/hw1/task1 src/hw1/task1.cpp
@@ -25,6 +25,9 @@ bin/hw1/task5: bin src/hw1/task5.cpp
 
 bin/hw1/task6: bin src/hw1/task6.cpp
 	$(CPP) -o bin/hw1/task6 src/hw1/task6.cpp
+
+bin/hw2/task1: bin src/hw2/task1.cpp
+	$(CPP) -o bin/hw2/task1 src/hw2/task1.cpp
 
 clean:
 	rm -rf bin/*
