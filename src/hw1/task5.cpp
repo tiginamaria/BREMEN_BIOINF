@@ -1,8 +1,19 @@
 #include <iostream>
 #include <vector>
 
-#include "lib.h"
+const char LETTERS[] = {'A', 'T', 'C', 'G'};
 
+
+int get_hamming_distance(const std::string &text1, const std::string &text2) {
+    int d = 0;
+    for (auto i = 0; i <= text1.size(); ++i) {
+        if (text1[i] != text2[i]) {
+            d += 1;
+        }
+    }
+
+    return d;
+}
 
 void get_neighbors_rec(const std::string &pattern, std::vector<char> &neighbor, int i, int d,
                        std::vector<std::string> &neighbors) {

@@ -1,7 +1,22 @@
 #include <iostream>
 #include <unordered_map>
 #include <vector>
-#include "lib.h"
+
+const std::unordered_map<char, char> LETTERS_MAPPING = {{'A', 'T'},
+                                                        {'T', 'A'},
+                                                        {'C', 'G'},
+                                                        {'G', 'C'}};
+
+int get_hamming_distance(const std::string &text1, const std::string &text2) {
+    int d = 0;
+    for (auto i = 0; i <= text1.size(); ++i) {
+        if (text1[i] != text2[i]) {
+            d += 1;
+        }
+    }
+
+    return d;
+}
 
 int get_count(const std::string &text, const std::string &pattern, int d) {
     auto k = pattern.length();
@@ -15,15 +30,10 @@ int get_count(const std::string &text, const std::string &pattern, int d) {
 }
 
 std::string get_reversed_complement_pattern(const std::string &pattern) {
-    std::unordered_map<char, char> map = {{'A', 'T'},
-                                          {'T', 'A'},
-                                          {'C', 'G'},
-                                          {'G', 'C'}};
-
     auto n = pattern.length();
     char reversed_pattern[n];
     for (auto i = 0; i < n; ++i) {
-        reversed_pattern[n - i - 1] = map[pattern[i]];
+        reversed_pattern[n - i - 1] = LETTERS_MAPPING.at(pattern[i]);
     }
 
     return reversed_pattern;

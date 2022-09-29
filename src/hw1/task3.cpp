@@ -1,6 +1,15 @@
 #include <iostream>
 
-#include "lib.h"
+int get_hamming_distance(const std::string &text1, const std::string &text2) {
+    int d = 0;
+    for (auto i = 0; i <= text1.size(); ++i) {
+        if (text1[i] != text2[i]) {
+            d += 1;
+        }
+    }
+
+    return d;
+}
 
 int main(int argc, char **argv) {
     if (argc < 3) {
